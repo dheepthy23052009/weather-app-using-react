@@ -1,0 +1,200 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-10-27T06:28:24.049Z",
+    "end": "2024-10-27T06:28:27.644Z",
+    "duration": 3595,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c77169bf-bf24-4ec6-8c71-140770f38b48",
+      "title": "",
+      "fullFile": "cypress\\e2e\\weather-app.cy.js",
+      "file": "cypress\\e2e\\weather-app.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b5fe8de0-3720-4449-a259-db517fc7135b",
+          "title": "WeatherApp Component",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display the search input and button",
+              "fullTitle": "WeatherApp Component should display the search input and button",
+              "timedOut": null,
+              "duration": 390,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[aria-label=\"Enter location to search for weather\"]').should(\"be.visible\");\ncy.get('button[aria-label=\"Search\"]').should(\"be.visible\").and(\"contain\", \"Search\");",
+              "err": {},
+              "uuid": "9ccbeec1-859b-4a79-8ffe-4b859039172b",
+              "parentUUID": "b5fe8de0-3720-4449-a259-db517fc7135b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show a loading spinner when fetching weather data",
+              "fullTitle": "WeatherApp Component should show a loading spinner when fetching weather data",
+              "timedOut": null,
+              "duration": 475,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[aria-label=\"Enter location to search for weather\"]').type(\"New York\");\ncy.get('button[aria-label=\"Search\"]').click();\ncy.get('[aria-label=\"Loading weather data\"]').should(\"be.visible\");",
+              "err": {},
+              "uuid": "28983ffb-96ca-4a07-961f-2b21f8cd0efa",
+              "parentUUID": "b5fe8de0-3720-4449-a259-db517fc7135b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should display an error message if the weather data fetch fails",
+              "fullTitle": "WeatherApp Component should display an error message if the weather data fetch fails",
+              "timedOut": null,
+              "duration": 445,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept(\"GET\", \"**/weather*\", {\n  statusCode: 404,\n  body: {\n    message: \"City not found\"\n  }\n});\ncy.get('input[aria-label=\"Enter location to search for weather\"]').type(\"UnknownCity\");\ncy.get('button[aria-label=\"Search\"]').click();\ncy.get('[role=\"alert\"]').should(\"contain\", \"City not found\");",
+              "err": {},
+              "uuid": "99c6971f-28e0-4137-b2e2-1bc25e9e8d4f",
+              "parentUUID": "b5fe8de0-3720-4449-a259-db517fc7135b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show the forecast button after fetching weather data",
+              "fullTitle": "WeatherApp Component should show the forecast button after fetching weather data",
+              "timedOut": null,
+              "duration": 757,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[aria-label=\"Enter location to search for weather\"]').type(\"New York\");\ncy.get('button[aria-label=\"Search\"]').click();\ncy.get(\".forecast-button\").contains(\"Next Week's Forecast\").first().click();",
+              "err": {},
+              "uuid": "4daaeeec-7765-4ade-9023-559b36cacd06",
+              "parentUUID": "b5fe8de0-3720-4449-a259-db517fc7135b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should display forecast tiles when the forecast button is clicked",
+              "fullTitle": "WeatherApp Component should display forecast tiles when the forecast button is clicked",
+              "timedOut": null,
+              "duration": 642,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[aria-label=\"Enter location to search for weather\"]').type(\"New York\");\ncy.get('button[aria-label=\"Search\"]').click();\ncy.get(\".forecast-button\").contains(\"Next Week's Forecast\").click();\ncy.get(\".forecast-tile\").should(\"have.length.greaterThan\", 0);",
+              "err": {},
+              "uuid": "59c46292-4caa-4c2b-8948-8e8c838790b4",
+              "parentUUID": "b5fe8de0-3720-4449-a259-db517fc7135b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should show hourly forecast for selected date tile",
+              "fullTitle": "WeatherApp Component should show hourly forecast for selected date tile",
+              "timedOut": null,
+              "duration": 714,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[aria-label=\"Enter location to search for weather\"]').type(\"New York\");\ncy.get('button[aria-label=\"Search\"]').click();\ncy.get(\".forecast-button\").contains(\"Next Week's Forecast\").click();\ncy.get(\".forecast-tile\").first().click();\ncy.get(\".forecast-tile-horizontal\").should(\"have.length.greaterThan\", 0);",
+              "err": {},
+              "uuid": "10334613-47dd-4908-aed4-81e1f9db4c5e",
+              "parentUUID": "b5fe8de0-3720-4449-a259-db517fc7135b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9ccbeec1-859b-4a79-8ffe-4b859039172b",
+            "28983ffb-96ca-4a07-961f-2b21f8cd0efa",
+            "99c6971f-28e0-4137-b2e2-1bc25e9e8d4f",
+            "4daaeeec-7765-4ade-9023-559b36cacd06",
+            "59c46292-4caa-4c2b-8948-8e8c838790b4",
+            "10334613-47dd-4908-aed4-81e1f9db4c5e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3423,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

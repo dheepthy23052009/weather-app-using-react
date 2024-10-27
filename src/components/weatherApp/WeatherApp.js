@@ -45,6 +45,7 @@ const WeatherApp = () => {
 
   return (
     <div className="app-container">
+      <h1>Weather App</h1>
       <div className="search-container">
         <label htmlFor="location-search" className="visually-hidden">Location Search</label>
         <input
